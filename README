@@ -1,0 +1,7 @@
+What is it?
+It is a snake game written in rust using the sdl2 library. I made it just to get familiar with rust and practice programming in it. You cannot go through walls and when the game is lost the program panics with a "GAME OVER!" message. You cannot see snake's directions. It's also a lot of terrible code.
+
+Compiling (assuming you are on linux):
+1. git clone https://github.com/Blayung/rust-snake <--- make sure you have git installed! If not, check that out: https://git-scm.com/downloads
+2. cd rust-snake
+3. cargo run                                       <--- make sure you have cargo installed! If not, check that out: https://rustup.rs
