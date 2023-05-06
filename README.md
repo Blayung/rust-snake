@@ -5,4 +5,5 @@ It is a snake game written in rust using the sdl2 library. I made it just to get
 0. Make sure you have git and cargo installed! If not, check these websites out: https://git-scm.com/downloads, https://rustup.rs.
 1. `git clone https://github.com/Blayung/rust-snake`
 2. `cd rust-snake`
-3. `cargo run`
+3. `cargo build --release`
+4. Now the executable should be here: `./target/release/snake`
