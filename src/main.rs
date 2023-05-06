@@ -13,21 +13,20 @@ pub fn main() {
     let screen_height: u8=20;
     let screen_width: u8=20;
     let cell_size: u8=30;
-    let fps_limit: u8=5;
+    let fps_limit: u8=8;
 
     let mut rng=rand::thread_rng();
 
     let mut apple_pos: (u8,u8)=(rng.gen_range(0..screen_width),rng.gen_range(0..screen_height));
     let mut snake_tail: std::collections::VecDeque<(i8,i8)> = std::collections::VecDeque::new();
-    snake_tail.push_back((3,3));
-    snake_tail.push_back((3,4));
-    snake_tail.push_back((3,5));
+    snake_tail.push_back((1,1));
+    snake_tail.push_back((1,2));
     let mut snake_direction: u8 = 2;
 
     // SDL2 Vars
     let sdl_context = sdl2::init().unwrap();
     let video_subsystem = sdl_context.video().unwrap();
-    let window = video_subsystem.window("snake", screen_width as u32 * cell_size as u32, screen_height as u32 * cell_size as u32).position_centered().opengl().build().unwrap();
+    let window = video_subsystem.window("Snake", screen_width as u32 * cell_size as u32, screen_height as u32 * cell_size as u32).position_centered().opengl().build().unwrap();
     let mut canvas = window.into_canvas().build().unwrap();
     let mut event_pump = sdl_context.event_pump().unwrap();
 
