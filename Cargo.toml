@@ -2,6 +2,8 @@
 name = "snake"
 version = "1.0.0"
 authors = ["Blay"]
+license = "GPL-3.0-only"
+repository = "https://github.com/Blayung/rust-snake"
 edition = "2021"
 
 [dependencies]
