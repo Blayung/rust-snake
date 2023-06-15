@@ -1,11 +1,3 @@
-extern crate sdl2;
-extern crate rand;
-
-use sdl2::pixels::Color;
-use sdl2::rect::Rect;
-use sdl2::event::Event;
-use sdl2::keyboard::Keycode;
-
 use rand::Rng;
 
 pub fn main() {
@@ -35,11 +27,11 @@ pub fn main() {
         // Events
         for event in event_pump.poll_iter() {
             match event {
-                Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => break 'main_loop,
-                Event::KeyDown { keycode: Some(Keycode::W), .. } | Event::KeyDown { keycode: Some(Keycode::Up), .. } => {if snake_direction != 2 {snake_direction=0;}}, // up
-                Event::KeyDown { keycode: Some(Keycode::D), .. } | Event::KeyDown { keycode: Some(Keycode::Right), .. } => {if snake_direction != 3 {snake_direction=1;}}, // right
-                Event::KeyDown { keycode: Some(Keycode::S), .. } | Event::KeyDown { keycode: Some(Keycode::Down), .. } => {if snake_direction != 0 {snake_direction=2;}}, // down
-                Event::KeyDown { keycode: Some(Keycode::A), .. } | Event::KeyDown { keycode: Some(Keycode::Left), .. } => {if snake_direction != 1 {snake_direction=3;}}, // left
+                sdl2::event::Event::Quit {..} | sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::Escape), .. } => break 'main_loop,
+                sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::W), .. } | sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::Up), .. } => {if snake_direction != 2 {snake_direction=0;}}, // up
+                sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::D), .. } | sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::Right), .. } => {if snake_direction != 3 {snake_direction=1;}}, // right
+                sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::S), .. } | sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::Down), .. } => {if snake_direction != 0 {snake_direction=2;}}, // down
+                sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::A), .. } | sdl2::event::Event::KeyDown { keycode: Some(sdl2::keyboard::Keycode::Left), .. } => {if snake_direction != 1 {snake_direction=3;}}, // left
                 _ => {}
             }
         }
@@ -68,16 +60,16 @@ pub fn main() {
         }
 
         // Drawing to the screen
-        canvas.set_draw_color(Color::RGB(0, 0, 0));
+        canvas.set_draw_color(sdl2::pixels::Color::RGB(0, 0, 0));
         canvas.clear();
 
-        canvas.set_draw_color(Color::RGB(0, 255, 0));
+        canvas.set_draw_color(sdl2::pixels::Color::RGB(0, 255, 0));
         for snake_segment in &snake_tail {
-            canvas.fill_rect(Rect::new((snake_segment.0 as i16 * cell_size as i16) as i32, (snake_segment.1 as i16 * cell_size as i16) as i32, cell_size as u32, cell_size as u32)).unwrap();
+            canvas.fill_rect(sdl2::rect::Rect::new((snake_segment.0 as i16 * cell_size as i16) as i32, (snake_segment.1 as i16 * cell_size as i16) as i32, cell_size as u32, cell_size as u32)).unwrap();
         }
 
-        canvas.set_draw_color(Color::RGB(255, 0, 0));
-        canvas.fill_rect(Rect::new((apple_pos.0 as i16 * cell_size as i16) as i32, (apple_pos.1 as i16 * cell_size as i16) as i32, cell_size as u32, cell_size as u32)).unwrap();
+        canvas.set_draw_color(sdl2::pixels::Color::RGB(255, 0, 0));
+        canvas.fill_rect(sdl2::rect::Rect::new((apple_pos.0 as i16 * cell_size as i16) as i32, (apple_pos.1 as i16 * cell_size as i16) as i32, cell_size as u32, cell_size as u32)).unwrap();
 
         canvas.present();
 
